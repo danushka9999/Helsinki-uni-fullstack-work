@@ -1,17 +1,13 @@
 import React, { useState } from 'react'
 
-const Display = ({counter}) => {
-  return (
-    <div>{counter}</div>
-  )
-}
-const Button = (props) => {
-  return (
-    <button onClick={props.onClick}>
-      {props.text}
+const Display = ({counter}) => <div>{counter}</div>
+  
+const Button = ({onClick , text}) => (
+    <button onClick={onClick}>
+      {text}
     </button>
   )
-}
+
 const App = () => {
   const [ counter, setCounter ] = useState(0)
   //Usually defining event handlers within JSX-templates is not a good idea. so changed it
