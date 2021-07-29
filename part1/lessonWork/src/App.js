@@ -2,14 +2,18 @@ import React, { useState } from 'react'
 
 const App = () => {
   const [ counter, setCounter ] = useState(0)
+  //Usually defining event handlers within JSX-templates is not a good idea. so changed it
+  const increaseByOne = () => setCounter(counter +1)
+
+  const setToZero = () => setCounter(0)
 
   return (
     <div>
       <div>{counter}</div>
-      <button onClick={() => setCounter(counter +1)}>
+      <button onClick={increaseByOne}>
         plus
       </button>
-      <button onClick={() => setCounter(0)}> 
+      <button onClick={setToZero}> 
         zero
       </button>
     </div>
