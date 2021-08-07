@@ -2,15 +2,7 @@ import React from 'react'
 import Course from './Course'
 
 
-//const Total = (props) =>{
 
-//  return(
-//    <>
-//      <p>Number of exercises {props.parts[0].exercises + props.parts[1].exercises + props.parts[2].exercises}</p>
-//    </>
-
-//  )
-//}
 const App = () => {
   const course = {
     id: 1,
