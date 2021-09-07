@@ -4,14 +4,16 @@ import Person from './components/Person'
 const App = () => {
   const [ persons, setPersons ] = useState([
     { name: 'Arto Hellas',
+      number: '0774020028',
       id: 1 }
   ]) 
   const [ newName, setNewName ] = useState('')
+  const [ newNumber, setNewNumber ] = useState('')
 
-  const handleNoteChange = (event) => {
+  /*const handleNoteChange = (event) => {
     console.log(event.target.value)
     setNewName(event.target.value)
-  }
+  }*/
   
 
   const addName = (event) => {
@@ -22,11 +24,13 @@ const App = () => {
     }
     const nameObject = {
       name: newName,
+      number: newNumber,
       id: persons.length + 1,
     }
   
     setPersons(persons.concat(nameObject))
     setNewName('')
+    setNewNumber('')
   }
   
   return (
@@ -36,13 +40,13 @@ const App = () => {
         <div>
           name: <input 
             value={newName}
-            onChange={handleNoteChange}
+            onChange={(e) => setNewName(e.target.value)}
           />
         </div>
         <div>
-          name: <input 
-            value={newName}
-            onChange={handleNoteChange}
+          number: <input 
+            value={newNumber}
+            onChange={(e) => setNewNumber(e.target.value)}
           />
         </div>
         <div>
