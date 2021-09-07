@@ -12,9 +12,14 @@ const App = () => {
     console.log(event.target.value)
     setNewName(event.target.value)
   }
+  
 
   const addName = (event) => {
     event.preventDefault()
+    if (persons.find(p => p.name === newName)) {
+      window.alert(`${newName} is already added to phonebook`);
+      return false;
+    }
     const nameObject = {
       name: newName,
       id: persons.length + 1,
@@ -28,6 +33,12 @@ const App = () => {
     <div>
       <h2>Phonebook</h2>
       <form onSubmit={addName}>
+        <div>
+          name: <input 
+            value={newName}
+            onChange={handleNoteChange}
+          />
+        </div>
         <div>
           name: <input 
             value={newName}
