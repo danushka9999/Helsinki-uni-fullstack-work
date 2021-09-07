@@ -1,36 +1,52 @@
 import React, { useState } from 'react'
 import Person from './components/Person'
 
+const initialValues = {
+  name: '',
+  number: '',
+
+};
+
 const App = () => {
   const [ persons, setPersons ] = useState([
     { name: 'Arto Hellas',
       number: '0774020028',
       id: 1 }
   ]) 
-  const [ newName, setNewName ] = useState('')
-  const [ newNumber, setNewNumber ] = useState('')
+  //const [ newName, setNewName ] = useState('')
+  //const [ newNumber, setNewNumber ] = useState('')
+  const [values, setValues] = useState(initialValues)
 
   /*const handleNoteChange = (event) => {
     console.log(event.target.value)
     setNewName(event.target.value)
   }*/
+  const handleInputChange = (e) => {
+    //const name = e.target.name 
+    //const value = e.target.value 
+    const { name, value } = e.target;
+
+    setValues({
+      ...values,
+      [name]: value,
+    });
+  };
   
 
   const addName = (event) => {
     event.preventDefault()
-    if (persons.find(p => p.name === newName)) {
-      window.alert(`${newName} is already added to phonebook`);
+    if (persons.find(p => p.name === values.name)) {
+      window.alert(`${values.name} is already added to phonebook`);
       return false;
     }
     const nameObject = {
-      name: newName,
-      number: newNumber,
+      name: values.name,
+      number: values.number,
       id: persons.length + 1,
     }
   
     setPersons(persons.concat(nameObject))
-    setNewName('')
-    setNewNumber('')
+    setValues(initialValues)
   }
   
   return (
@@ -39,14 +55,16 @@ const App = () => {
       <form onSubmit={addName}>
         <div>
           name: <input 
-            value={newName}
-            onChange={(e) => setNewName(e.target.value)}
+            value={values.name}
+            name="name"
+            onChange={handleInputChange }
           />
         </div>
         <div>
           number: <input 
-            value={newNumber}
-            onChange={(e) => setNewNumber(e.target.value)}
+            value={values.number}
+            name="number"
+            onChange={handleInputChange }
           />
         </div>
         <div>
